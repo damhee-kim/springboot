@@ -1,20 +1,18 @@
-package com.basic.myspringboot.config;
+package com.basic.myspringboot.vo;
 
-import com.basic.myspringboot.vo.CustomerVO;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+@Profile("test")
 @Configuration
-@Profile("prod")
-public class ProdConfig {
+public class TestConfig {
 
     @Bean
     public CustomerVO customerVO() {
         return CustomerVO.builder() //CustomerVOBuilder
-                .id(200L)
-                .mode("운영환경")
+                .id(100L)
+                .mode("테스트환경")
                 .build();
     }
-
 }
