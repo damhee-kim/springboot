@@ -1,5 +1,7 @@
 package com.basic.myspringboot;
 
+import com.basic.myspringboot.property.BootProperty;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,9 +30,16 @@ public class BasicSpringBootAppApplication {
 
 		// 1. Anoymous Inner class
 		 return new ApplicationRunner() {
+
+			 @Autowired
+			 private BootProperty property;
+
 			 @Override
 			 public void run(ApplicationArguments args) throws Exception {
 				 System.out.println("Anonymous Inner class 형태");
+
+				 System.out.println("MyBootProperty 객체의 환경변수 getName() " + property.getFullName());
+				 System.out.println("MyBootProperty 객체의 환경변수 getAge() " + property.getAge());
 
 				 args.getOptionNames().forEach(new Consumer<String>() {
 					 @Override
