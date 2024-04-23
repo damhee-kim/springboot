@@ -1,5 +1,7 @@
 package com.basic.myspringboot.runner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.basic.myspringboot.vo.CustomerVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -12,6 +14,9 @@ import org.springframework.beans.factory.annotation.Value;
 @Component
 @Order (2)
 public class Runner implements ApplicationRunner {
+
+    private Logger logger = LoggerFactory.getLogger(Runner.class);
+
     @Value("${myboot.name}")
     private String name;
     @Value("${myboot.age}")
@@ -25,16 +30,16 @@ public class Runner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("MyRunner class");
+        logger.info("MyRunner class");
 
-        System.out.println("현재 활성화된 profile = " + customer);
+        logger.info("현재 활성화된 profile = " + customer);
 
-        System.out.println("환경변수 myboot.name = " + name);
-        System.out.println("환경변수 myboot.age = " + age);
+        logger.info("환경변수 myboot.name = " + name);
+        logger.info("환경변수 myboot.age = " + age);
 
-        System.out.println("Enviroment 구현객체 클래스 이름 = " + enviroment.getClass().getName());
+        logger.info("Enviroment 구현객체 클래스 이름 = " + enviroment.getClass().getName());
 
-        System.out.println("VM arguments -Dfoo " + args.containsOption("foo"));
-        System.out.println("VM arguments --bar " + args.containsOption("bar"));
+        logger.info("VM arguments -Dfoo " + args.containsOption("foo"));
+        logger.info("VM arguments --bar " + args.containsOption("bar"));
     }
 }
