@@ -39,5 +39,8 @@ public class UserRestController {
                 .orElseThrow(() -> new BusinessException("User Not Found", HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/welcome") public String welcome() {
+        return "Welcome this endpoint is not secure";
+    }
 
 }
